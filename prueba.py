@@ -1,3 +1,82 @@
+reserved = {
+    "progIni" : "PROGINI",
+    "progFin" : "PROGFIN",
+    "libExterna" : "INCLUIR",
+    "entero" : "int",
+    "decimal" : "float",
+    "texto" : "string",
+    "logico" : "bool",
+    "def" : "DEFINIR",
+    "true" : "true",
+    "false" : "false",
+    "func" : "FUNC",
+    "return" : "return",
+    "AND" : "AND",
+    "OR" : "OR",
+    "pin" : "DEF PIN",
+    "sal" : "SAL",
+    "ent" : "ENT",
+    "if" : "IF",
+    "begin" : "BEGIN",
+    "else" : "ELSE",
+    "end" : "END",
+    "while" : "WHILE",
+    "adel" : "ADEL",
+    "atr" : "ATR",
+    "izq" : "IZQ",
+    "der" : "DER",
+    "esp" : "ESP",
+    "stop" : "STOP",
+
+}
+
+
+t_progIni = r'PROGINI'
+t_progFin = r'PROGFIN'
+t_libExterna = r'INCLUIR'
+t_entero = r'int'
+t_texto = r'string'
+t_decimal = r'float'
+t_logico = r'bool'
+t_def = r'DEFINIR'
+t_true = r'true'
+
+t_false = r'false'
+
+t_func = r'FUNC'
+
+t_return = r'return'
+
+
+t_operadorLog = r'AND|OR'
+
+t_pin = r'DEF\sPIN'
+
+t_sal = r'SAL'
+
+t_ent = r'ENT'
+
+t_if = r'IF'
+
+t_begin = r'BEGIN'
+
+t_else = r'ELSE'
+
+t_end = r'END'
+
+t_while = r'WHILE'
+
+t_adel = r'ADEL'
+
+t_atr = r'ATR'
+
+t_izq = r'IZQ'
+
+t_der = r'DER'
+
+t_esp = r'ESP'
+
+t_stop = r'STOP'
 # t_progIni = r'\PROGINI'
 # t_progFin = r'\PROGFIN'
 # t_finLinea = r'\'
