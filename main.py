@@ -1,19 +1,18 @@
 from analizadorSintactico import parser
 
-filename='data.txt'
+archivo='data.txt'
 
 try:
-    f = open(filename)
+    f = open(archivo)
     data = f.read()
     f.close()
-    print('Contenido del archivo:\n',data,'\n')
+    print('Data:\n',data,'\n')
 except IndexError:
     print('Error en archivo:\n')
     data = ''
 
 try:
     resultado = parser.parse(data)
-    print(resultado)
-    print('¡Analisis sintactico correcto!')
-except:
-    print('Analisis sintactico incorrecto')
+    print('¡Analisis sintactico correcto!😊')
+except Exception as e:
+    print(f'Analisis sintactico incorrecto😫 => {e}')
