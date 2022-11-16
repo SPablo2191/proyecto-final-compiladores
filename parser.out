@@ -1,0 +1,2926 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    operadorAr
+
+Grammar
+
+Rule 0     S' -> s
+Rule 1     s -> PROGINI programa PROGFIN
+Rule 2     programa -> incluir programa
+Rule 3     programa -> cuerpo
+Rule 4     cuerpo -> pin cuerpo
+Rule 5     cuerpo -> definir cuerpo
+Rule 6     cuerpo -> asignar cuerpo
+Rule 7     cuerpo -> comLinea cuerpo
+Rule 8     cuerpo -> comBloque cuerpo
+Rule 9     cuerpo -> saltoLinea cuerpo
+Rule 10    cuerpo -> adelante cuerpo
+Rule 11    cuerpo -> atras cuerpo
+Rule 12    cuerpo -> izquierda cuerpo
+Rule 13    cuerpo -> derecha cuerpo
+Rule 14    cuerpo -> esperar cuerpo
+Rule 15    cuerpo -> parar cuerpo
+Rule 16    cuerpo -> if cuerpo
+Rule 17    cuerpo -> while cuerpo
+Rule 18    cuerpo -> funcion cuerpo
+Rule 19    cuerpo -> empty
+Rule 20    pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+Rule 21    tipoPin -> SAL
+Rule 22    tipoPin -> ENT
+Rule 23    incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea
+Rule 24    definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+Rule 25    definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea
+Rule 26    tipo -> int
+Rule 27    tipo -> float
+Rule 28    tipo -> string
+Rule 29    tipo -> bool
+Rule 30    valor -> numero
+Rule 31    valor -> comilla variable comilla
+Rule 32    valor -> true
+Rule 33    valor -> false
+Rule 34    asignar -> variable asig valor finLinea
+Rule 35    asignar -> variable asig variable finLinea
+Rule 36    finFuncion -> inicioParentesis finParentesis finLinea
+Rule 37    adelante -> ADEL finFuncion
+Rule 38    atras -> ATR finFuncion
+Rule 39    izquierda -> IZQ finFuncion
+Rule 40    derecha -> DER finFuncion
+Rule 41    parar -> STOP finFuncion
+Rule 42    esperar -> ESP inicioParentesis numero finParentesis finLinea
+Rule 43    predicado -> false
+Rule 44    predicado -> true
+Rule 45    predicado -> valor operadorComp valor
+Rule 46    predicado -> inicioParentesis predicado operadorLog predicado finParentesis
+Rule 47    operadorLog -> AND
+Rule 48    operadorLog -> OR
+Rule 49    if -> IF predicado BEGIN cuerpo END else
+Rule 50    else -> ELSE BEGIN cuerpo END
+Rule 51    else -> empty
+Rule 52    while -> WHILE predicado BEGIN cuerpo END
+Rule 53    funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea
+Rule 54    retorno -> dosPuntos tipo
+Rule 55    retorno -> empty
+Rule 56    parametros -> tipo dosPuntos variable
+Rule 57    parametros -> tipo dosPuntos variable coma parametros
+Rule 58    parametros -> empty
+Rule 59    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ADEL                 : 37
+AND                  : 47
+ATR                  : 38
+BEGIN                : 49 50 52
+DEF                  : 20
+DEFINIR              : 24 25
+DER                  : 40
+ELSE                 : 50
+END                  : 49 50 52
+ENT                  : 22
+ESP                  : 42
+FUNC                 : 53
+IF                   : 49
+INCLUIR              : 23
+IZQ                  : 39
+OR                   : 48
+PIN                  : 20
+PROGFIN              : 1
+PROGINI              : 1
+SAL                  : 21
+STOP                 : 41
+WHILE                : 52
+asig                 : 24 34 35
+bool                 : 29
+comBloque            : 8
+comLinea             : 7
+coma                 : 57
+comilla              : 23 23 31 31
+dosPuntos            : 20 54 56 57
+error                : 
+false                : 33 43
+finLinea             : 20 23 23 24 25 34 35 36 42 53
+finParentesis        : 20 23 24 25 36 42 46 53
+float                : 27
+inicioParentesis     : 20 23 24 25 36 42 46 53
+int                  : 26
+numero               : 30 42
+operadorAr           : 
+operadorComp         : 45
+saltoLinea           : 9
+string               : 28
+true                 : 32 44
+variable             : 20 23 23 24 25 31 34 35 35 56 57
+
+Nonterminals, with rules where they appear
+
+adelante             : 10
+asignar              : 6
+atras                : 11
+cuerpo               : 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 49 50 52
+definir              : 5
+derecha              : 13
+else                 : 49
+empty                : 19 51 55 58
+esperar              : 14
+finFuncion           : 37 38 39 40 41
+funcion              : 18
+if                   : 16
+incluir              : 2
+izquierda            : 12
+operadorLog          : 46
+parametros           : 53 57
+parar                : 15
+pin                  : 4
+predicado            : 46 46 49 52
+programa             : 1 2
+retorno              : 53
+s                    : 0
+tipo                 : 24 25 54 56 57
+tipoPin              : 20
+valor                : 24 34 45 45
+while                : 17
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . s
+    (1) s -> . PROGINI programa PROGFIN
+
+    PROGINI         shift and go to state 2
+
+    s                              shift and go to state 1
+
+state 1
+
+    (0) S' -> s .
+
+
+
+state 2
+
+    (1) s -> PROGINI . programa PROGFIN
+    (2) programa -> . incluir programa
+    (3) programa -> . cuerpo
+    (23) incluir -> . INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    INCLUIR         shift and go to state 6
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+
+    programa                       shift and go to state 3
+    incluir                        shift and go to state 4
+    cuerpo                         shift and go to state 5
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 3
+
+    (1) s -> PROGINI programa . PROGFIN
+
+    PROGFIN         shift and go to state 35
+
+
+state 4
+
+    (2) programa -> incluir . programa
+    (2) programa -> . incluir programa
+    (3) programa -> . cuerpo
+    (23) incluir -> . INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    INCLUIR         shift and go to state 6
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+
+    incluir                        shift and go to state 4
+    programa                       shift and go to state 36
+    cuerpo                         shift and go to state 5
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 5
+
+    (3) programa -> cuerpo .
+
+    PROGFIN         reduce using rule 3 (programa -> cuerpo .)
+
+
+state 6
+
+    (23) incluir -> INCLUIR . inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea
+
+    inicioParentesis shift and go to state 37
+
+
+state 7
+
+    (34) asignar -> variable . asig valor finLinea
+    (35) asignar -> variable . asig variable finLinea
+
+    asig            shift and go to state 38
+
+
+state 8
+
+    (4) cuerpo -> pin . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    pin                            shift and go to state 8
+    cuerpo                         shift and go to state 39
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 9
+
+    (5) cuerpo -> definir . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    definir                        shift and go to state 9
+    cuerpo                         shift and go to state 40
+    pin                            shift and go to state 8
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 10
+
+    (6) cuerpo -> asignar . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    asignar                        shift and go to state 10
+    cuerpo                         shift and go to state 41
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 11
+
+    (7) cuerpo -> comLinea . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    cuerpo                         shift and go to state 42
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 12
+
+    (8) cuerpo -> comBloque . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    cuerpo                         shift and go to state 43
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 13
+
+    (9) cuerpo -> saltoLinea . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    cuerpo                         shift and go to state 44
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 14
+
+    (10) cuerpo -> adelante . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    adelante                       shift and go to state 14
+    cuerpo                         shift and go to state 45
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 15
+
+    (11) cuerpo -> atras . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    atras                          shift and go to state 15
+    cuerpo                         shift and go to state 46
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 16
+
+    (12) cuerpo -> izquierda . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    izquierda                      shift and go to state 16
+    cuerpo                         shift and go to state 47
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 17
+
+    (13) cuerpo -> derecha . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    derecha                        shift and go to state 17
+    cuerpo                         shift and go to state 48
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 18
+
+    (14) cuerpo -> esperar . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    esperar                        shift and go to state 18
+    cuerpo                         shift and go to state 49
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 19
+
+    (15) cuerpo -> parar . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    parar                          shift and go to state 19
+    cuerpo                         shift and go to state 50
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 20
+
+    (16) cuerpo -> if . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    if                             shift and go to state 20
+    cuerpo                         shift and go to state 51
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 21
+
+    (17) cuerpo -> while . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    while                          shift and go to state 21
+    cuerpo                         shift and go to state 52
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 22
+
+    (18) cuerpo -> funcion . cuerpo
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    funcion                        shift and go to state 22
+    cuerpo                         shift and go to state 53
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    empty                          shift and go to state 23
+
+state 23
+
+    (19) cuerpo -> empty .
+
+    PROGFIN         reduce using rule 19 (cuerpo -> empty .)
+    END             reduce using rule 19 (cuerpo -> empty .)
+
+
+state 24
+
+    (20) pin -> DEF . PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+
+    PIN             shift and go to state 54
+
+
+state 25
+
+    (24) definir -> DEFINIR . inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> DEFINIR . inicioParentesis tipo variable finParentesis finLinea
+
+    inicioParentesis shift and go to state 55
+
+
+state 26
+
+    (37) adelante -> ADEL . finFuncion
+    (36) finFuncion -> . inicioParentesis finParentesis finLinea
+
+    inicioParentesis shift and go to state 57
+
+    finFuncion                     shift and go to state 56
+
+state 27
+
+    (38) atras -> ATR . finFuncion
+    (36) finFuncion -> . inicioParentesis finParentesis finLinea
+
+    inicioParentesis shift and go to state 57
+
+    finFuncion                     shift and go to state 58
+
+state 28
+
+    (39) izquierda -> IZQ . finFuncion
+    (36) finFuncion -> . inicioParentesis finParentesis finLinea
+
+    inicioParentesis shift and go to state 57
+
+    finFuncion                     shift and go to state 59
+
+state 29
+
+    (40) derecha -> DER . finFuncion
+    (36) finFuncion -> . inicioParentesis finParentesis finLinea
+
+    inicioParentesis shift and go to state 57
+
+    finFuncion                     shift and go to state 60
+
+state 30
+
+    (42) esperar -> ESP . inicioParentesis numero finParentesis finLinea
+
+    inicioParentesis shift and go to state 61
+
+
+state 31
+
+    (41) parar -> STOP . finFuncion
+    (36) finFuncion -> . inicioParentesis finParentesis finLinea
+
+    inicioParentesis shift and go to state 57
+
+    finFuncion                     shift and go to state 62
+
+state 32
+
+    (49) if -> IF . predicado BEGIN cuerpo END else
+    (43) predicado -> . false
+    (44) predicado -> . true
+    (45) predicado -> . valor operadorComp valor
+    (46) predicado -> . inicioParentesis predicado operadorLog predicado finParentesis
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    false           shift and go to state 64
+    true            shift and go to state 65
+    inicioParentesis shift and go to state 67
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+
+    predicado                      shift and go to state 63
+    valor                          shift and go to state 66
+
+state 33
+
+    (52) while -> WHILE . predicado BEGIN cuerpo END
+    (43) predicado -> . false
+    (44) predicado -> . true
+    (45) predicado -> . valor operadorComp valor
+    (46) predicado -> . inicioParentesis predicado operadorLog predicado finParentesis
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    false           shift and go to state 64
+    true            shift and go to state 65
+    inicioParentesis shift and go to state 67
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+
+    predicado                      shift and go to state 70
+    valor                          shift and go to state 66
+
+state 34
+
+    (53) funcion -> FUNC . inicioParentesis parametros finParentesis retorno finLinea
+
+    inicioParentesis shift and go to state 71
+
+
+state 35
+
+    (1) s -> PROGINI programa PROGFIN .
+
+    $end            reduce using rule 1 (s -> PROGINI programa PROGFIN .)
+
+
+state 36
+
+    (2) programa -> incluir programa .
+
+    PROGFIN         reduce using rule 2 (programa -> incluir programa .)
+
+
+state 37
+
+    (23) incluir -> INCLUIR inicioParentesis . comilla variable finLinea variable comilla finParentesis finLinea
+
+    comilla         shift and go to state 72
+
+
+state 38
+
+    (34) asignar -> variable asig . valor finLinea
+    (35) asignar -> variable asig . variable finLinea
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    variable        shift and go to state 73
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+    true            shift and go to state 75
+    false           shift and go to state 76
+
+    valor                          shift and go to state 74
+
+state 39
+
+    (4) cuerpo -> pin cuerpo .
+
+    PROGFIN         reduce using rule 4 (cuerpo -> pin cuerpo .)
+    END             reduce using rule 4 (cuerpo -> pin cuerpo .)
+
+
+state 40
+
+    (5) cuerpo -> definir cuerpo .
+
+    PROGFIN         reduce using rule 5 (cuerpo -> definir cuerpo .)
+    END             reduce using rule 5 (cuerpo -> definir cuerpo .)
+
+
+state 41
+
+    (6) cuerpo -> asignar cuerpo .
+
+    PROGFIN         reduce using rule 6 (cuerpo -> asignar cuerpo .)
+    END             reduce using rule 6 (cuerpo -> asignar cuerpo .)
+
+
+state 42
+
+    (7) cuerpo -> comLinea cuerpo .
+
+    PROGFIN         reduce using rule 7 (cuerpo -> comLinea cuerpo .)
+    END             reduce using rule 7 (cuerpo -> comLinea cuerpo .)
+
+
+state 43
+
+    (8) cuerpo -> comBloque cuerpo .
+
+    PROGFIN         reduce using rule 8 (cuerpo -> comBloque cuerpo .)
+    END             reduce using rule 8 (cuerpo -> comBloque cuerpo .)
+
+
+state 44
+
+    (9) cuerpo -> saltoLinea cuerpo .
+
+    PROGFIN         reduce using rule 9 (cuerpo -> saltoLinea cuerpo .)
+    END             reduce using rule 9 (cuerpo -> saltoLinea cuerpo .)
+
+
+state 45
+
+    (10) cuerpo -> adelante cuerpo .
+
+    PROGFIN         reduce using rule 10 (cuerpo -> adelante cuerpo .)
+    END             reduce using rule 10 (cuerpo -> adelante cuerpo .)
+
+
+state 46
+
+    (11) cuerpo -> atras cuerpo .
+
+    PROGFIN         reduce using rule 11 (cuerpo -> atras cuerpo .)
+    END             reduce using rule 11 (cuerpo -> atras cuerpo .)
+
+
+state 47
+
+    (12) cuerpo -> izquierda cuerpo .
+
+    PROGFIN         reduce using rule 12 (cuerpo -> izquierda cuerpo .)
+    END             reduce using rule 12 (cuerpo -> izquierda cuerpo .)
+
+
+state 48
+
+    (13) cuerpo -> derecha cuerpo .
+
+    PROGFIN         reduce using rule 13 (cuerpo -> derecha cuerpo .)
+    END             reduce using rule 13 (cuerpo -> derecha cuerpo .)
+
+
+state 49
+
+    (14) cuerpo -> esperar cuerpo .
+
+    PROGFIN         reduce using rule 14 (cuerpo -> esperar cuerpo .)
+    END             reduce using rule 14 (cuerpo -> esperar cuerpo .)
+
+
+state 50
+
+    (15) cuerpo -> parar cuerpo .
+
+    PROGFIN         reduce using rule 15 (cuerpo -> parar cuerpo .)
+    END             reduce using rule 15 (cuerpo -> parar cuerpo .)
+
+
+state 51
+
+    (16) cuerpo -> if cuerpo .
+
+    PROGFIN         reduce using rule 16 (cuerpo -> if cuerpo .)
+    END             reduce using rule 16 (cuerpo -> if cuerpo .)
+
+
+state 52
+
+    (17) cuerpo -> while cuerpo .
+
+    PROGFIN         reduce using rule 17 (cuerpo -> while cuerpo .)
+    END             reduce using rule 17 (cuerpo -> while cuerpo .)
+
+
+state 53
+
+    (18) cuerpo -> funcion cuerpo .
+
+    PROGFIN         reduce using rule 18 (cuerpo -> funcion cuerpo .)
+    END             reduce using rule 18 (cuerpo -> funcion cuerpo .)
+
+
+state 54
+
+    (20) pin -> DEF PIN . inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+
+    inicioParentesis shift and go to state 77
+
+
+state 55
+
+    (24) definir -> DEFINIR inicioParentesis . tipo variable asig valor finParentesis finLinea
+    (25) definir -> DEFINIR inicioParentesis . tipo variable finParentesis finLinea
+    (26) tipo -> . int
+    (27) tipo -> . float
+    (28) tipo -> . string
+    (29) tipo -> . bool
+
+    int             shift and go to state 79
+    float           shift and go to state 80
+    string          shift and go to state 81
+    bool            shift and go to state 82
+
+    tipo                           shift and go to state 78
+
+state 56
+
+    (37) adelante -> ADEL finFuncion .
+
+    comLinea        reduce using rule 37 (adelante -> ADEL finFuncion .)
+    comBloque       reduce using rule 37 (adelante -> ADEL finFuncion .)
+    saltoLinea      reduce using rule 37 (adelante -> ADEL finFuncion .)
+    DEF             reduce using rule 37 (adelante -> ADEL finFuncion .)
+    DEFINIR         reduce using rule 37 (adelante -> ADEL finFuncion .)
+    variable        reduce using rule 37 (adelante -> ADEL finFuncion .)
+    ADEL            reduce using rule 37 (adelante -> ADEL finFuncion .)
+    ATR             reduce using rule 37 (adelante -> ADEL finFuncion .)
+    IZQ             reduce using rule 37 (adelante -> ADEL finFuncion .)
+    DER             reduce using rule 37 (adelante -> ADEL finFuncion .)
+    ESP             reduce using rule 37 (adelante -> ADEL finFuncion .)
+    STOP            reduce using rule 37 (adelante -> ADEL finFuncion .)
+    IF              reduce using rule 37 (adelante -> ADEL finFuncion .)
+    WHILE           reduce using rule 37 (adelante -> ADEL finFuncion .)
+    FUNC            reduce using rule 37 (adelante -> ADEL finFuncion .)
+    PROGFIN         reduce using rule 37 (adelante -> ADEL finFuncion .)
+    END             reduce using rule 37 (adelante -> ADEL finFuncion .)
+
+
+state 57
+
+    (36) finFuncion -> inicioParentesis . finParentesis finLinea
+
+    finParentesis   shift and go to state 83
+
+
+state 58
+
+    (38) atras -> ATR finFuncion .
+
+    comLinea        reduce using rule 38 (atras -> ATR finFuncion .)
+    comBloque       reduce using rule 38 (atras -> ATR finFuncion .)
+    saltoLinea      reduce using rule 38 (atras -> ATR finFuncion .)
+    DEF             reduce using rule 38 (atras -> ATR finFuncion .)
+    DEFINIR         reduce using rule 38 (atras -> ATR finFuncion .)
+    variable        reduce using rule 38 (atras -> ATR finFuncion .)
+    ADEL            reduce using rule 38 (atras -> ATR finFuncion .)
+    ATR             reduce using rule 38 (atras -> ATR finFuncion .)
+    IZQ             reduce using rule 38 (atras -> ATR finFuncion .)
+    DER             reduce using rule 38 (atras -> ATR finFuncion .)
+    ESP             reduce using rule 38 (atras -> ATR finFuncion .)
+    STOP            reduce using rule 38 (atras -> ATR finFuncion .)
+    IF              reduce using rule 38 (atras -> ATR finFuncion .)
+    WHILE           reduce using rule 38 (atras -> ATR finFuncion .)
+    FUNC            reduce using rule 38 (atras -> ATR finFuncion .)
+    PROGFIN         reduce using rule 38 (atras -> ATR finFuncion .)
+    END             reduce using rule 38 (atras -> ATR finFuncion .)
+
+
+state 59
+
+    (39) izquierda -> IZQ finFuncion .
+
+    comLinea        reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    comBloque       reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    saltoLinea      reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    DEF             reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    DEFINIR         reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    variable        reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    ADEL            reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    ATR             reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    IZQ             reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    DER             reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    ESP             reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    STOP            reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    IF              reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    WHILE           reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    FUNC            reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    PROGFIN         reduce using rule 39 (izquierda -> IZQ finFuncion .)
+    END             reduce using rule 39 (izquierda -> IZQ finFuncion .)
+
+
+state 60
+
+    (40) derecha -> DER finFuncion .
+
+    comLinea        reduce using rule 40 (derecha -> DER finFuncion .)
+    comBloque       reduce using rule 40 (derecha -> DER finFuncion .)
+    saltoLinea      reduce using rule 40 (derecha -> DER finFuncion .)
+    DEF             reduce using rule 40 (derecha -> DER finFuncion .)
+    DEFINIR         reduce using rule 40 (derecha -> DER finFuncion .)
+    variable        reduce using rule 40 (derecha -> DER finFuncion .)
+    ADEL            reduce using rule 40 (derecha -> DER finFuncion .)
+    ATR             reduce using rule 40 (derecha -> DER finFuncion .)
+    IZQ             reduce using rule 40 (derecha -> DER finFuncion .)
+    DER             reduce using rule 40 (derecha -> DER finFuncion .)
+    ESP             reduce using rule 40 (derecha -> DER finFuncion .)
+    STOP            reduce using rule 40 (derecha -> DER finFuncion .)
+    IF              reduce using rule 40 (derecha -> DER finFuncion .)
+    WHILE           reduce using rule 40 (derecha -> DER finFuncion .)
+    FUNC            reduce using rule 40 (derecha -> DER finFuncion .)
+    PROGFIN         reduce using rule 40 (derecha -> DER finFuncion .)
+    END             reduce using rule 40 (derecha -> DER finFuncion .)
+
+
+state 61
+
+    (42) esperar -> ESP inicioParentesis . numero finParentesis finLinea
+
+    numero          shift and go to state 84
+
+
+state 62
+
+    (41) parar -> STOP finFuncion .
+
+    comLinea        reduce using rule 41 (parar -> STOP finFuncion .)
+    comBloque       reduce using rule 41 (parar -> STOP finFuncion .)
+    saltoLinea      reduce using rule 41 (parar -> STOP finFuncion .)
+    DEF             reduce using rule 41 (parar -> STOP finFuncion .)
+    DEFINIR         reduce using rule 41 (parar -> STOP finFuncion .)
+    variable        reduce using rule 41 (parar -> STOP finFuncion .)
+    ADEL            reduce using rule 41 (parar -> STOP finFuncion .)
+    ATR             reduce using rule 41 (parar -> STOP finFuncion .)
+    IZQ             reduce using rule 41 (parar -> STOP finFuncion .)
+    DER             reduce using rule 41 (parar -> STOP finFuncion .)
+    ESP             reduce using rule 41 (parar -> STOP finFuncion .)
+    STOP            reduce using rule 41 (parar -> STOP finFuncion .)
+    IF              reduce using rule 41 (parar -> STOP finFuncion .)
+    WHILE           reduce using rule 41 (parar -> STOP finFuncion .)
+    FUNC            reduce using rule 41 (parar -> STOP finFuncion .)
+    PROGFIN         reduce using rule 41 (parar -> STOP finFuncion .)
+    END             reduce using rule 41 (parar -> STOP finFuncion .)
+
+
+state 63
+
+    (49) if -> IF predicado . BEGIN cuerpo END else
+
+    BEGIN           shift and go to state 85
+
+
+state 64
+
+    (43) predicado -> false .
+    (33) valor -> false .
+
+    BEGIN           reduce using rule 43 (predicado -> false .)
+    AND             reduce using rule 43 (predicado -> false .)
+    OR              reduce using rule 43 (predicado -> false .)
+    finParentesis   reduce using rule 43 (predicado -> false .)
+    operadorComp    reduce using rule 33 (valor -> false .)
+
+
+state 65
+
+    (44) predicado -> true .
+    (32) valor -> true .
+
+    BEGIN           reduce using rule 44 (predicado -> true .)
+    AND             reduce using rule 44 (predicado -> true .)
+    OR              reduce using rule 44 (predicado -> true .)
+    finParentesis   reduce using rule 44 (predicado -> true .)
+    operadorComp    reduce using rule 32 (valor -> true .)
+
+
+state 66
+
+    (45) predicado -> valor . operadorComp valor
+
+    operadorComp    shift and go to state 86
+
+
+state 67
+
+    (46) predicado -> inicioParentesis . predicado operadorLog predicado finParentesis
+    (43) predicado -> . false
+    (44) predicado -> . true
+    (45) predicado -> . valor operadorComp valor
+    (46) predicado -> . inicioParentesis predicado operadorLog predicado finParentesis
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    false           shift and go to state 64
+    true            shift and go to state 65
+    inicioParentesis shift and go to state 67
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+
+    predicado                      shift and go to state 87
+    valor                          shift and go to state 66
+
+state 68
+
+    (30) valor -> numero .
+
+    operadorComp    reduce using rule 30 (valor -> numero .)
+    finLinea        reduce using rule 30 (valor -> numero .)
+    BEGIN           reduce using rule 30 (valor -> numero .)
+    AND             reduce using rule 30 (valor -> numero .)
+    OR              reduce using rule 30 (valor -> numero .)
+    finParentesis   reduce using rule 30 (valor -> numero .)
+
+
+state 69
+
+    (31) valor -> comilla . variable comilla
+
+    variable        shift and go to state 88
+
+
+state 70
+
+    (52) while -> WHILE predicado . BEGIN cuerpo END
+
+    BEGIN           shift and go to state 89
+
+
+state 71
+
+    (53) funcion -> FUNC inicioParentesis . parametros finParentesis retorno finLinea
+    (56) parametros -> . tipo dosPuntos variable
+    (57) parametros -> . tipo dosPuntos variable coma parametros
+    (58) parametros -> . empty
+    (26) tipo -> . int
+    (27) tipo -> . float
+    (28) tipo -> . string
+    (29) tipo -> . bool
+    (59) empty -> .
+
+    int             shift and go to state 79
+    float           shift and go to state 80
+    string          shift and go to state 81
+    bool            shift and go to state 82
+    finParentesis   reduce using rule 59 (empty -> .)
+
+    parametros                     shift and go to state 90
+    tipo                           shift and go to state 91
+    empty                          shift and go to state 92
+
+state 72
+
+    (23) incluir -> INCLUIR inicioParentesis comilla . variable finLinea variable comilla finParentesis finLinea
+
+    variable        shift and go to state 93
+
+
+state 73
+
+    (35) asignar -> variable asig variable . finLinea
+
+    finLinea        shift and go to state 94
+
+
+state 74
+
+    (34) asignar -> variable asig valor . finLinea
+
+    finLinea        shift and go to state 95
+
+
+state 75
+
+    (32) valor -> true .
+
+    finLinea        reduce using rule 32 (valor -> true .)
+    BEGIN           reduce using rule 32 (valor -> true .)
+    AND             reduce using rule 32 (valor -> true .)
+    OR              reduce using rule 32 (valor -> true .)
+    finParentesis   reduce using rule 32 (valor -> true .)
+
+
+state 76
+
+    (33) valor -> false .
+
+    finLinea        reduce using rule 33 (valor -> false .)
+    BEGIN           reduce using rule 33 (valor -> false .)
+    AND             reduce using rule 33 (valor -> false .)
+    OR              reduce using rule 33 (valor -> false .)
+    finParentesis   reduce using rule 33 (valor -> false .)
+
+
+state 77
+
+    (20) pin -> DEF PIN inicioParentesis . variable dosPuntos tipoPin finParentesis finLinea
+
+    variable        shift and go to state 96
+
+
+state 78
+
+    (24) definir -> DEFINIR inicioParentesis tipo . variable asig valor finParentesis finLinea
+    (25) definir -> DEFINIR inicioParentesis tipo . variable finParentesis finLinea
+
+    variable        shift and go to state 97
+
+
+state 79
+
+    (26) tipo -> int .
+
+    variable        reduce using rule 26 (tipo -> int .)
+    dosPuntos       reduce using rule 26 (tipo -> int .)
+    finLinea        reduce using rule 26 (tipo -> int .)
+
+
+state 80
+
+    (27) tipo -> float .
+
+    variable        reduce using rule 27 (tipo -> float .)
+    dosPuntos       reduce using rule 27 (tipo -> float .)
+    finLinea        reduce using rule 27 (tipo -> float .)
+
+
+state 81
+
+    (28) tipo -> string .
+
+    variable        reduce using rule 28 (tipo -> string .)
+    dosPuntos       reduce using rule 28 (tipo -> string .)
+    finLinea        reduce using rule 28 (tipo -> string .)
+
+
+state 82
+
+    (29) tipo -> bool .
+
+    variable        reduce using rule 29 (tipo -> bool .)
+    dosPuntos       reduce using rule 29 (tipo -> bool .)
+    finLinea        reduce using rule 29 (tipo -> bool .)
+
+
+state 83
+
+    (36) finFuncion -> inicioParentesis finParentesis . finLinea
+
+    finLinea        shift and go to state 98
+
+
+state 84
+
+    (42) esperar -> ESP inicioParentesis numero . finParentesis finLinea
+
+    finParentesis   shift and go to state 99
+
+
+state 85
+
+    (49) if -> IF predicado BEGIN . cuerpo END else
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    END             reduce using rule 59 (empty -> .)
+
+    cuerpo                         shift and go to state 100
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 86
+
+    (45) predicado -> valor operadorComp . valor
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+    true            shift and go to state 75
+    false           shift and go to state 76
+
+    valor                          shift and go to state 101
+
+state 87
+
+    (46) predicado -> inicioParentesis predicado . operadorLog predicado finParentesis
+    (47) operadorLog -> . AND
+    (48) operadorLog -> . OR
+
+    AND             shift and go to state 103
+    OR              shift and go to state 104
+
+    operadorLog                    shift and go to state 102
+
+state 88
+
+    (31) valor -> comilla variable . comilla
+
+    comilla         shift and go to state 105
+
+
+state 89
+
+    (52) while -> WHILE predicado BEGIN . cuerpo END
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    END             reduce using rule 59 (empty -> .)
+
+    cuerpo                         shift and go to state 106
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 90
+
+    (53) funcion -> FUNC inicioParentesis parametros . finParentesis retorno finLinea
+
+    finParentesis   shift and go to state 107
+
+
+state 91
+
+    (56) parametros -> tipo . dosPuntos variable
+    (57) parametros -> tipo . dosPuntos variable coma parametros
+
+    dosPuntos       shift and go to state 108
+
+
+state 92
+
+    (58) parametros -> empty .
+
+    finParentesis   reduce using rule 58 (parametros -> empty .)
+
+
+state 93
+
+    (23) incluir -> INCLUIR inicioParentesis comilla variable . finLinea variable comilla finParentesis finLinea
+
+    finLinea        shift and go to state 109
+
+
+state 94
+
+    (35) asignar -> variable asig variable finLinea .
+
+    comLinea        reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    comBloque       reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    saltoLinea      reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    DEF             reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    DEFINIR         reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    variable        reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    ADEL            reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    ATR             reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    IZQ             reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    DER             reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    ESP             reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    STOP            reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    IF              reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    WHILE           reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    FUNC            reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    PROGFIN         reduce using rule 35 (asignar -> variable asig variable finLinea .)
+    END             reduce using rule 35 (asignar -> variable asig variable finLinea .)
+
+
+state 95
+
+    (34) asignar -> variable asig valor finLinea .
+
+    comLinea        reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    comBloque       reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    saltoLinea      reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    DEF             reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    DEFINIR         reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    variable        reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    ADEL            reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    ATR             reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    IZQ             reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    DER             reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    ESP             reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    STOP            reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    IF              reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    WHILE           reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    FUNC            reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    PROGFIN         reduce using rule 34 (asignar -> variable asig valor finLinea .)
+    END             reduce using rule 34 (asignar -> variable asig valor finLinea .)
+
+
+state 96
+
+    (20) pin -> DEF PIN inicioParentesis variable . dosPuntos tipoPin finParentesis finLinea
+
+    dosPuntos       shift and go to state 110
+
+
+state 97
+
+    (24) definir -> DEFINIR inicioParentesis tipo variable . asig valor finParentesis finLinea
+    (25) definir -> DEFINIR inicioParentesis tipo variable . finParentesis finLinea
+
+    asig            shift and go to state 111
+    finParentesis   shift and go to state 112
+
+
+state 98
+
+    (36) finFuncion -> inicioParentesis finParentesis finLinea .
+
+    comLinea        reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    comBloque       reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    saltoLinea      reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    DEF             reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    DEFINIR         reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    variable        reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    ADEL            reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    ATR             reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    IZQ             reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    DER             reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    ESP             reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    STOP            reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    IF              reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    WHILE           reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    FUNC            reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    PROGFIN         reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+    END             reduce using rule 36 (finFuncion -> inicioParentesis finParentesis finLinea .)
+
+
+state 99
+
+    (42) esperar -> ESP inicioParentesis numero finParentesis . finLinea
+
+    finLinea        shift and go to state 113
+
+
+state 100
+
+    (49) if -> IF predicado BEGIN cuerpo . END else
+
+    END             shift and go to state 114
+
+
+state 101
+
+    (45) predicado -> valor operadorComp valor .
+
+    BEGIN           reduce using rule 45 (predicado -> valor operadorComp valor .)
+    AND             reduce using rule 45 (predicado -> valor operadorComp valor .)
+    OR              reduce using rule 45 (predicado -> valor operadorComp valor .)
+    finParentesis   reduce using rule 45 (predicado -> valor operadorComp valor .)
+
+
+state 102
+
+    (46) predicado -> inicioParentesis predicado operadorLog . predicado finParentesis
+    (43) predicado -> . false
+    (44) predicado -> . true
+    (45) predicado -> . valor operadorComp valor
+    (46) predicado -> . inicioParentesis predicado operadorLog predicado finParentesis
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    false           shift and go to state 64
+    true            shift and go to state 65
+    inicioParentesis shift and go to state 67
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+
+    predicado                      shift and go to state 115
+    valor                          shift and go to state 66
+
+state 103
+
+    (47) operadorLog -> AND .
+
+    false           reduce using rule 47 (operadorLog -> AND .)
+    true            reduce using rule 47 (operadorLog -> AND .)
+    inicioParentesis reduce using rule 47 (operadorLog -> AND .)
+    numero          reduce using rule 47 (operadorLog -> AND .)
+    comilla         reduce using rule 47 (operadorLog -> AND .)
+
+
+state 104
+
+    (48) operadorLog -> OR .
+
+    false           reduce using rule 48 (operadorLog -> OR .)
+    true            reduce using rule 48 (operadorLog -> OR .)
+    inicioParentesis reduce using rule 48 (operadorLog -> OR .)
+    numero          reduce using rule 48 (operadorLog -> OR .)
+    comilla         reduce using rule 48 (operadorLog -> OR .)
+
+
+state 105
+
+    (31) valor -> comilla variable comilla .
+
+    operadorComp    reduce using rule 31 (valor -> comilla variable comilla .)
+    finLinea        reduce using rule 31 (valor -> comilla variable comilla .)
+    BEGIN           reduce using rule 31 (valor -> comilla variable comilla .)
+    AND             reduce using rule 31 (valor -> comilla variable comilla .)
+    OR              reduce using rule 31 (valor -> comilla variable comilla .)
+    finParentesis   reduce using rule 31 (valor -> comilla variable comilla .)
+
+
+state 106
+
+    (52) while -> WHILE predicado BEGIN cuerpo . END
+
+    END             shift and go to state 116
+
+
+state 107
+
+    (53) funcion -> FUNC inicioParentesis parametros finParentesis . retorno finLinea
+    (54) retorno -> . dosPuntos tipo
+    (55) retorno -> . empty
+    (59) empty -> .
+
+    dosPuntos       shift and go to state 118
+    finLinea        reduce using rule 59 (empty -> .)
+
+    retorno                        shift and go to state 117
+    empty                          shift and go to state 119
+
+state 108
+
+    (56) parametros -> tipo dosPuntos . variable
+    (57) parametros -> tipo dosPuntos . variable coma parametros
+
+    variable        shift and go to state 120
+
+
+state 109
+
+    (23) incluir -> INCLUIR inicioParentesis comilla variable finLinea . variable comilla finParentesis finLinea
+
+    variable        shift and go to state 121
+
+
+state 110
+
+    (20) pin -> DEF PIN inicioParentesis variable dosPuntos . tipoPin finParentesis finLinea
+    (21) tipoPin -> . SAL
+    (22) tipoPin -> . ENT
+
+    SAL             shift and go to state 123
+    ENT             shift and go to state 124
+
+    tipoPin                        shift and go to state 122
+
+state 111
+
+    (24) definir -> DEFINIR inicioParentesis tipo variable asig . valor finParentesis finLinea
+    (30) valor -> . numero
+    (31) valor -> . comilla variable comilla
+    (32) valor -> . true
+    (33) valor -> . false
+
+    numero          shift and go to state 68
+    comilla         shift and go to state 69
+    true            shift and go to state 75
+    false           shift and go to state 76
+
+    valor                          shift and go to state 125
+
+state 112
+
+    (25) definir -> DEFINIR inicioParentesis tipo variable finParentesis . finLinea
+
+    finLinea        shift and go to state 126
+
+
+state 113
+
+    (42) esperar -> ESP inicioParentesis numero finParentesis finLinea .
+
+    comLinea        reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    comBloque       reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    saltoLinea      reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    DEF             reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    DEFINIR         reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    variable        reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    ADEL            reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    ATR             reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    IZQ             reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    DER             reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    ESP             reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    STOP            reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    IF              reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    WHILE           reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    FUNC            reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    PROGFIN         reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+    END             reduce using rule 42 (esperar -> ESP inicioParentesis numero finParentesis finLinea .)
+
+
+state 114
+
+    (49) if -> IF predicado BEGIN cuerpo END . else
+    (50) else -> . ELSE BEGIN cuerpo END
+    (51) else -> . empty
+    (59) empty -> .
+
+    ELSE            shift and go to state 128
+    comLinea        reduce using rule 59 (empty -> .)
+    comBloque       reduce using rule 59 (empty -> .)
+    saltoLinea      reduce using rule 59 (empty -> .)
+    DEF             reduce using rule 59 (empty -> .)
+    DEFINIR         reduce using rule 59 (empty -> .)
+    variable        reduce using rule 59 (empty -> .)
+    ADEL            reduce using rule 59 (empty -> .)
+    ATR             reduce using rule 59 (empty -> .)
+    IZQ             reduce using rule 59 (empty -> .)
+    DER             reduce using rule 59 (empty -> .)
+    ESP             reduce using rule 59 (empty -> .)
+    STOP            reduce using rule 59 (empty -> .)
+    IF              reduce using rule 59 (empty -> .)
+    WHILE           reduce using rule 59 (empty -> .)
+    FUNC            reduce using rule 59 (empty -> .)
+    PROGFIN         reduce using rule 59 (empty -> .)
+    END             reduce using rule 59 (empty -> .)
+
+    else                           shift and go to state 127
+    empty                          shift and go to state 129
+
+state 115
+
+    (46) predicado -> inicioParentesis predicado operadorLog predicado . finParentesis
+
+    finParentesis   shift and go to state 130
+
+
+state 116
+
+    (52) while -> WHILE predicado BEGIN cuerpo END .
+
+    comLinea        reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    comBloque       reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    saltoLinea      reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    DEF             reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    DEFINIR         reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    variable        reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    ADEL            reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    ATR             reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    IZQ             reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    DER             reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    ESP             reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    STOP            reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    IF              reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    WHILE           reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    FUNC            reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    PROGFIN         reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+    END             reduce using rule 52 (while -> WHILE predicado BEGIN cuerpo END .)
+
+
+state 117
+
+    (53) funcion -> FUNC inicioParentesis parametros finParentesis retorno . finLinea
+
+    finLinea        shift and go to state 131
+
+
+state 118
+
+    (54) retorno -> dosPuntos . tipo
+    (26) tipo -> . int
+    (27) tipo -> . float
+    (28) tipo -> . string
+    (29) tipo -> . bool
+
+    int             shift and go to state 79
+    float           shift and go to state 80
+    string          shift and go to state 81
+    bool            shift and go to state 82
+
+    tipo                           shift and go to state 132
+
+state 119
+
+    (55) retorno -> empty .
+
+    finLinea        reduce using rule 55 (retorno -> empty .)
+
+
+state 120
+
+    (56) parametros -> tipo dosPuntos variable .
+    (57) parametros -> tipo dosPuntos variable . coma parametros
+
+    finParentesis   reduce using rule 56 (parametros -> tipo dosPuntos variable .)
+    coma            shift and go to state 133
+
+
+state 121
+
+    (23) incluir -> INCLUIR inicioParentesis comilla variable finLinea variable . comilla finParentesis finLinea
+
+    comilla         shift and go to state 134
+
+
+state 122
+
+    (20) pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin . finParentesis finLinea
+
+    finParentesis   shift and go to state 135
+
+
+state 123
+
+    (21) tipoPin -> SAL .
+
+    finParentesis   reduce using rule 21 (tipoPin -> SAL .)
+
+
+state 124
+
+    (22) tipoPin -> ENT .
+
+    finParentesis   reduce using rule 22 (tipoPin -> ENT .)
+
+
+state 125
+
+    (24) definir -> DEFINIR inicioParentesis tipo variable asig valor . finParentesis finLinea
+
+    finParentesis   shift and go to state 136
+
+
+state 126
+
+    (25) definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .
+
+    comLinea        reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    comBloque       reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    saltoLinea      reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    DEF             reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    DEFINIR         reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    variable        reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    ADEL            reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    ATR             reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    IZQ             reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    DER             reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    ESP             reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    STOP            reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    IF              reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    WHILE           reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    FUNC            reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    PROGFIN         reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+    END             reduce using rule 25 (definir -> DEFINIR inicioParentesis tipo variable finParentesis finLinea .)
+
+
+state 127
+
+    (49) if -> IF predicado BEGIN cuerpo END else .
+
+    comLinea        reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    comBloque       reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    saltoLinea      reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    DEF             reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    DEFINIR         reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    variable        reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    ADEL            reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    ATR             reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    IZQ             reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    DER             reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    ESP             reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    STOP            reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    IF              reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    WHILE           reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    FUNC            reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    PROGFIN         reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+    END             reduce using rule 49 (if -> IF predicado BEGIN cuerpo END else .)
+
+
+state 128
+
+    (50) else -> ELSE . BEGIN cuerpo END
+
+    BEGIN           shift and go to state 137
+
+
+state 129
+
+    (51) else -> empty .
+
+    comLinea        reduce using rule 51 (else -> empty .)
+    comBloque       reduce using rule 51 (else -> empty .)
+    saltoLinea      reduce using rule 51 (else -> empty .)
+    DEF             reduce using rule 51 (else -> empty .)
+    DEFINIR         reduce using rule 51 (else -> empty .)
+    variable        reduce using rule 51 (else -> empty .)
+    ADEL            reduce using rule 51 (else -> empty .)
+    ATR             reduce using rule 51 (else -> empty .)
+    IZQ             reduce using rule 51 (else -> empty .)
+    DER             reduce using rule 51 (else -> empty .)
+    ESP             reduce using rule 51 (else -> empty .)
+    STOP            reduce using rule 51 (else -> empty .)
+    IF              reduce using rule 51 (else -> empty .)
+    WHILE           reduce using rule 51 (else -> empty .)
+    FUNC            reduce using rule 51 (else -> empty .)
+    PROGFIN         reduce using rule 51 (else -> empty .)
+    END             reduce using rule 51 (else -> empty .)
+
+
+state 130
+
+    (46) predicado -> inicioParentesis predicado operadorLog predicado finParentesis .
+
+    BEGIN           reduce using rule 46 (predicado -> inicioParentesis predicado operadorLog predicado finParentesis .)
+    AND             reduce using rule 46 (predicado -> inicioParentesis predicado operadorLog predicado finParentesis .)
+    OR              reduce using rule 46 (predicado -> inicioParentesis predicado operadorLog predicado finParentesis .)
+    finParentesis   reduce using rule 46 (predicado -> inicioParentesis predicado operadorLog predicado finParentesis .)
+
+
+state 131
+
+    (53) funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .
+
+    comLinea        reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    comBloque       reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    saltoLinea      reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    DEF             reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    DEFINIR         reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    variable        reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    ADEL            reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    ATR             reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    IZQ             reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    DER             reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    ESP             reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    STOP            reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    IF              reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    WHILE           reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    FUNC            reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    PROGFIN         reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+    END             reduce using rule 53 (funcion -> FUNC inicioParentesis parametros finParentesis retorno finLinea .)
+
+
+state 132
+
+    (54) retorno -> dosPuntos tipo .
+
+    finLinea        reduce using rule 54 (retorno -> dosPuntos tipo .)
+
+
+state 133
+
+    (57) parametros -> tipo dosPuntos variable coma . parametros
+    (56) parametros -> . tipo dosPuntos variable
+    (57) parametros -> . tipo dosPuntos variable coma parametros
+    (58) parametros -> . empty
+    (26) tipo -> . int
+    (27) tipo -> . float
+    (28) tipo -> . string
+    (29) tipo -> . bool
+    (59) empty -> .
+
+    int             shift and go to state 79
+    float           shift and go to state 80
+    string          shift and go to state 81
+    bool            shift and go to state 82
+    finParentesis   reduce using rule 59 (empty -> .)
+
+    tipo                           shift and go to state 91
+    parametros                     shift and go to state 138
+    empty                          shift and go to state 92
+
+state 134
+
+    (23) incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla . finParentesis finLinea
+
+    finParentesis   shift and go to state 139
+
+
+state 135
+
+    (20) pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis . finLinea
+
+    finLinea        shift and go to state 140
+
+
+state 136
+
+    (24) definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis . finLinea
+
+    finLinea        shift and go to state 141
+
+
+state 137
+
+    (50) else -> ELSE BEGIN . cuerpo END
+    (4) cuerpo -> . pin cuerpo
+    (5) cuerpo -> . definir cuerpo
+    (6) cuerpo -> . asignar cuerpo
+    (7) cuerpo -> . comLinea cuerpo
+    (8) cuerpo -> . comBloque cuerpo
+    (9) cuerpo -> . saltoLinea cuerpo
+    (10) cuerpo -> . adelante cuerpo
+    (11) cuerpo -> . atras cuerpo
+    (12) cuerpo -> . izquierda cuerpo
+    (13) cuerpo -> . derecha cuerpo
+    (14) cuerpo -> . esperar cuerpo
+    (15) cuerpo -> . parar cuerpo
+    (16) cuerpo -> . if cuerpo
+    (17) cuerpo -> . while cuerpo
+    (18) cuerpo -> . funcion cuerpo
+    (19) cuerpo -> . empty
+    (20) pin -> . DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea
+    (24) definir -> . DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea
+    (25) definir -> . DEFINIR inicioParentesis tipo variable finParentesis finLinea
+    (34) asignar -> . variable asig valor finLinea
+    (35) asignar -> . variable asig variable finLinea
+    (37) adelante -> . ADEL finFuncion
+    (38) atras -> . ATR finFuncion
+    (39) izquierda -> . IZQ finFuncion
+    (40) derecha -> . DER finFuncion
+    (42) esperar -> . ESP inicioParentesis numero finParentesis finLinea
+    (41) parar -> . STOP finFuncion
+    (49) if -> . IF predicado BEGIN cuerpo END else
+    (52) while -> . WHILE predicado BEGIN cuerpo END
+    (53) funcion -> . FUNC inicioParentesis parametros finParentesis retorno finLinea
+    (59) empty -> .
+
+    comLinea        shift and go to state 11
+    comBloque       shift and go to state 12
+    saltoLinea      shift and go to state 13
+    DEF             shift and go to state 24
+    DEFINIR         shift and go to state 25
+    variable        shift and go to state 7
+    ADEL            shift and go to state 26
+    ATR             shift and go to state 27
+    IZQ             shift and go to state 28
+    DER             shift and go to state 29
+    ESP             shift and go to state 30
+    STOP            shift and go to state 31
+    IF              shift and go to state 32
+    WHILE           shift and go to state 33
+    FUNC            shift and go to state 34
+    END             reduce using rule 59 (empty -> .)
+
+    cuerpo                         shift and go to state 142
+    pin                            shift and go to state 8
+    definir                        shift and go to state 9
+    asignar                        shift and go to state 10
+    adelante                       shift and go to state 14
+    atras                          shift and go to state 15
+    izquierda                      shift and go to state 16
+    derecha                        shift and go to state 17
+    esperar                        shift and go to state 18
+    parar                          shift and go to state 19
+    if                             shift and go to state 20
+    while                          shift and go to state 21
+    funcion                        shift and go to state 22
+    empty                          shift and go to state 23
+
+state 138
+
+    (57) parametros -> tipo dosPuntos variable coma parametros .
+
+    finParentesis   reduce using rule 57 (parametros -> tipo dosPuntos variable coma parametros .)
+
+
+state 139
+
+    (23) incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis . finLinea
+
+    finLinea        shift and go to state 143
+
+
+state 140
+
+    (20) pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .
+
+    comLinea        reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    comBloque       reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    saltoLinea      reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    DEF             reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    DEFINIR         reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    variable        reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    ADEL            reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    ATR             reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    IZQ             reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    DER             reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    ESP             reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    STOP            reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    IF              reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    WHILE           reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    FUNC            reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    PROGFIN         reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+    END             reduce using rule 20 (pin -> DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea .)
+
+
+state 141
+
+    (24) definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .
+
+    comLinea        reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    comBloque       reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    saltoLinea      reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    DEF             reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    DEFINIR         reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    variable        reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    ADEL            reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    ATR             reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    IZQ             reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    DER             reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    ESP             reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    STOP            reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    IF              reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    WHILE           reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    FUNC            reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    PROGFIN         reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+    END             reduce using rule 24 (definir -> DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea .)
+
+
+state 142
+
+    (50) else -> ELSE BEGIN cuerpo . END
+
+    END             shift and go to state 144
+
+
+state 143
+
+    (23) incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .
+
+    INCLUIR         reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    comLinea        reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    comBloque       reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    saltoLinea      reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    DEF             reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    DEFINIR         reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    variable        reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    ADEL            reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    ATR             reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    IZQ             reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    DER             reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    ESP             reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    STOP            reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    IF              reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    WHILE           reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    FUNC            reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+    PROGFIN         reduce using rule 23 (incluir -> INCLUIR inicioParentesis comilla variable finLinea variable comilla finParentesis finLinea .)
+
+
+state 144
+
+    (50) else -> ELSE BEGIN cuerpo END .
+
+    comLinea        reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    comBloque       reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    saltoLinea      reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    DEF             reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    DEFINIR         reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    variable        reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    ADEL            reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    ATR             reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    IZQ             reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    DER             reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    ESP             reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    STOP            reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    IF              reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    WHILE           reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    FUNC            reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    PROGFIN         reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+    END             reduce using rule 50 (else -> ELSE BEGIN cuerpo END .)
+
