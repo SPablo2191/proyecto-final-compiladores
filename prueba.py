@@ -220,3 +220,22 @@ tokens = [
     "t_esp",
     "t_stop"
     ]
+
+def t_comLinea(t):
+    r'//[a-zA-Z0-9|_ | .|,| ¿ | ? |¡ | ¡ | " | & | ( | ) | { | } | [ | ] |= | \s ]*'
+    return t
+
+def t_comBloque(t):
+    r'\{[a-zA-Z0-9|_ | .|,| ¿ | ? |¡ | ¡ | " | & | ( | ) | { | } | [ | ] |= | \s | \n ]*}'
+    return t
+
+#·simples
+# t_finLinea = r'\.'
+# t_coma = r'\,'
+# t_operadorAr = r'\+ |\- |\*|\/'
+# t_operadorComp = r'\>|<|==|!=|<=|>='
+# t_dosPuntos = r':'
+# t_inicioParentesis = r'\('
+# t_finParentesis = r'\)'
+# t_comilla = r' \' '
+# t_asig = r':='

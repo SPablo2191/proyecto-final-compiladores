@@ -10,6 +10,8 @@ reserved = {
     "string" : "string",
     "bool" : "bool",
     "DEFINIR" : "DEFINIR",
+    "PIN" :"PIN",
+    "DEF" : "DEF",
     "true" : "true",
     "false" : "false",
     "FUNC" : "FUNC",
@@ -51,16 +53,7 @@ tokens = [
     ] + list(reserved.values())
 
 
-# Expresiones regulares para tokens simples
-# t_finLinea = r'\.'
-# t_coma = r'\,'
-# t_operadorAr = r'\+ |\- |\*|\/'
-# t_operadorComp = r'\>|<|==|!=|<=|>='
-# t_dosPuntos = r':'
-# t_inicioParentesis = r'\('
-# t_finParentesis = r'\)'
-# t_comilla = r' \' '
-# t_asig = r':='
+# Expresiones regulares para tokens 
 
 def t_finLinea(t):
     r'\.'
@@ -72,11 +65,11 @@ def t_coma(t):
 def t_operadorComp(t):
     r'\>|<|==|!=|<=|>='
     return t
+def t_asig(t):
+    r':='
+    return t
 def t_dosPuntos(t):
     r':'
-    return t
-def t_operadorAr(t):
-    r'\+ |\- |\*|\/'
     return t
 
 def t_inicioParentesis(t):
@@ -90,18 +83,17 @@ def t_comilla(t):
     r' \' '
     return t
 
-def t_asig(t):
-    r':='
-    return t
 
 def t_comLinea(t):
-    r'//[a-zA-Z0-9|_ | .|,| ¿ | ? |¡ | ¡ | " | & | ( | ) | { | } | [ | ] |= | \s ]*'
-    t.type = reserved.get(t.value,"comLinea")
+    r'//.*'
     return t
 
 def t_comBloque(t):
-    r'{[a-zA-Z0-9|_ | .|,| ¿ | ? |¡ | ¡ | " | & | ( | ) | { | } | [ | ] |= | \s | \n ]*}'
-    t.type = reserved.get(t.value,"comBloque")
+    r'{\*.\*}'
+    return t
+
+def t_operadorAr(t):
+    r'\+ |\- |\*|\/'
     return t
 
 def t_numero(t):
@@ -129,24 +121,24 @@ def t_variable(t):
 
 analizador = lex.lex()
 
-def leerTxt():
-    try:
-        f = open('data.txt', 'r')
-        data = f.read()
-        f.close()
-        return data
-    except:
-        sys.stdout.write('Reading from stad  input (tye EOF to end) : \n')
-        data = sys.stdin.read()
-        return data
+# def leerTxt():
+#     try:
+#         f = open('data.txt', 'r')
+#         data = f.read()
+#         f.close()
+#         return data
+#     except:
+#         sys.stdout.write('Reading from stad  input (tye EOF to end) : \n')
+#         data = sys.stdin.read()
+#         return data
 
 
-analizador.input(leerTxt())
+# analizador.input(leerTxt())
 
-# Identifica tokens
-print('Token - Lexema - Linea')
-while True:
-    tok = analizador.token()
-    if not tok:
-        break
-    print('(', tok.type, ',', tok.value, ',', tok.lineno, ')')
+# # Identifica tokens
+# print('Token - Lexema - Linea')
+# while True:
+#     tok = analizador.token()
+#     if not tok:
+#         break
+#     print('(', tok.type, ',', tok.value, ',', tok.lineno, ')')
