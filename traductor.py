@@ -1,4 +1,4 @@
-def translate(p,callback,is_pin=False,is_first_pin=False,is_first_reserved=False, is_reserved=False):
+def traductorArduino(p,callback,is_pin=False,is_first_pin=False,is_first_reserved=False, is_reserved=False):
   with open("compi.ino","r") as fileRead:
     file_content=fileRead.readlines()
   with open("compi.ino","w") as fileWrite:
