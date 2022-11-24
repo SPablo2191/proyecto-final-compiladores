@@ -1,5 +1,6 @@
 def cb_p_incluir(p):
     list_p = list(p)
+    print(list_p)
     result = "".join(["#include <"]+list_p[4:7]+[".h>"]+["\n"])
     return result
 

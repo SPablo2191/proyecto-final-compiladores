@@ -4,8 +4,8 @@ from ply import lex
 reserved = {
     "PROGINI" : "PROGINI",
     "PROGFIN" : "PROGFIN",
-    "INCLUIR" : "INCLUIR",
     "int" : "int",
+    "INCLUIR" : "INCLUIR",
     "float" : "float",
     "string" : "string",
     "bool" : "bool",
