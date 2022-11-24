@@ -1,9 +1,10 @@
 #include <nombreDeLibreria.Extension.h>
-) MD1;
-:= MD2;
+int MD1;
+int MD2;
+MD2:=3;
 void setup(){
-pinMode(MD1 , MD1 );
-pinMode(MD2 , MD2 );
+pinMode(MD1, OUTPUT);
+pinMode(MD2, OUTPUT);
 
 }
 loop setup(){

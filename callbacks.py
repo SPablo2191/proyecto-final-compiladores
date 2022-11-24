@@ -7,16 +7,11 @@ def cb_p_incluir(p):
 
 def cb_p_definir(p):
     list_p = list(p)
-    print(f"hola {list_p}")
-    result = "".join([list_p[5]]+[" "]+[list_p[4]]+[";"]+["\n"])
-    print(result)
-    return result
-
-# def cb_p_reservadas(p):
-#   list_cast = list(p)
-#   result = "".join([list_cast[1]]+[list_cast[2]]+[list_cast[3]]+[";"]+["\n"])
-#   print(result)
-#   return result
+    aux = f'{list_p[3]} {list_p[4]};'+"\n"
+    if list_p[5] == ':=':
+      return aux+f'{list_p[4]}{list_p[5]}{list_p[6]};'+"\n"
+    else:
+      return aux
 
 
 def cb_p_asignar(p):
@@ -53,11 +48,11 @@ def cb_p_predicado(p):
 
 def cb_p_pin(p):
     list_p = list(p)
-    print(list_p)
-    result = "".join(
-        ["pinMode("]+[list_p[4]]+[" , "]+[list_p[4]]+[" );"]+["\n"])
-    print(result)
-    return result
+    print(list_p[4])
+    if list_p[6] == 'SAL':
+      return f'pinMode({list_p[4]}, OUTPUT);'+"\n"
+    elif list_p[6] == 'ENT':
+      return f'pinMode({list_p[4]}, INPUT);'+"\n"
 
 
 def cb_p_reservadas(p):
