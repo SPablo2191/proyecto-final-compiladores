@@ -3,7 +3,7 @@ from analizadorLexico import analizador,tokens
 from callbacks import *
 from traductor import traductorArduino
 is_first_pin = False
-is_first_operaciones = False
+is_first_reservadas = False
 
 def p_start(p):
   """s : PROGINI programa PROGFIN"""
@@ -21,12 +21,7 @@ def p_cuerpo(p):
               | comLinea cuerpo
               | comBloque cuerpo
               | saltoLinea cuerpo
-              | adelante cuerpo
-              | atras cuerpo
-              | izquierda cuerpo
-              | derecha cuerpo
-              | esperar cuerpo
-              | parar cuerpo
+              | reservadas cuerpo
               | if cuerpo
               | while cuerpo
               | funcion cuerpo
@@ -34,7 +29,7 @@ def p_cuerpo(p):
   pass
 
 def p_pin(p):
-  """pin : DEF PIN inicioParentesis variable dosPuntos tipoPin finParentesis finLinea"""
+  """pin : DEF PIN inicioParentesis variable dosPuntos pinTipo finParentesis finLinea"""
   is_first_pin = True if p_pin.counter <= 0 else False
   p_pin.counter += 1
   traductorArduino(p, cb_p_pin, is_first_pin=is_first_pin,is_pin=True)
@@ -44,8 +39,8 @@ p_pin.counter = 0
 
 
 
-def p_tipoPin(p):
-  """tipoPin : SAL 
+def p_pinTipo(p):
+  """pinTipo : SAL 
              | ENT"""
   pass
 
@@ -58,14 +53,14 @@ def p_incluir(p):
 
 
 def p_definir(p):
-  """definir : DEFINIR inicioParentesis tipo variable asig valor finParentesis finLinea 
-              | DEFINIR inicioParentesis tipo variable finParentesis finLinea 
+  """definir  : DEFINIR inicioParentesis varTipo variable asig valor finParentesis finLinea 
+              | DEFINIR inicioParentesis varTipo variable finParentesis finLinea 
               """
   traductorArduino(p,cb_p_definir)
   pass
 
-def p_tipo(p):
-  """tipo : int 
+def p_varTipo(p):
+  """varTipo : int 
           | float 
           | string 
           | bool"""
@@ -77,6 +72,18 @@ def p_valor(p):
             | true
             | false"""
   pass
+def p_reservadas(p):
+  """ reservadas : ADEL finFuncion
+                | ATR finFuncion
+                | IZQ finFuncion
+                | DER finFuncion
+                | ESP inicioParentesis numero finParentesis finLinea
+                | STOP finFuncion"""
+  is_first_reserved = True if p_reservadas.counter <= 0 else False
+  p_reservadas.counter += 1
+  traductorArduino(p,cb_p_reservadas, is_first_reserved=is_first_reserved, is_reserved=True)
+  pass
+p_reservadas.counter = 0
 
 def p_asignar(p):
   """asignar : variable asig valor finLinea
@@ -88,44 +95,6 @@ def p_finFuncion(p):
   """finFuncion : inicioParentesis finParentesis finLinea"""
   pass
 
-def p_adelante(p):
-  """adelante : ADEL finFuncion"""
-  is_first_operaciones = True if p_adelante.counter <= 0 else False
-  # p_adelante.counter += 1
-  traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
-  pass
-
-
-def p_atras(p):
-  """atras : ATR finFuncion"""
-  is_first_operaciones = True if p_atras.counter <= 0 else False
-  # p_adelante.counter += 1
-  traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
-  pass
-def p_izquierda(p):
-  """izquierda : IZQ finFuncion"""
-  is_first_operaciones = True if p_izquierda.counter <= 0 else False
-  # p_adelante.counter += 1
-  traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
-  pass
-def p_derecha(p):
-  """derecha : DER finFuncion"""
-  is_first_operaciones = True if p_derecha.counter <= 0 else False
-  # p_adelante.counter += 1
-  traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
-  pass
-def p_parar(p):
-  """parar : STOP finFuncion"""
-  is_first_operaciones = True if p_parar.counter <= 0 else False
-  # p_adelante.counter += 1
-  traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
-  pass
-def p_esperar(p):
-  """esperar : ESP inicioParentesis numero finParentesis finLinea"""
-  is_first_operaciones = True if p_esperar.counter <= 0 else False
-  # p_adelante.counter += 1
-  traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
-  pass
 def p_predicado(p):
   """predicado : false 
                 | true 
@@ -151,12 +120,12 @@ def p_funcion(p):
   traductorArduino(p,cb_p_funcion)
   pass
 def p_retorno(p):
-  """retorno : dosPuntos tipo 
+  """retorno : dosPuntos varTipo 
               | empty"""
   pass
 def p_parametros(p):
-  """parametros : tipo dosPuntos variable 
-                | tipo dosPuntos variable coma parametros
+  """parametros : varTipo dosPuntos variable 
+                | varTipo dosPuntos variable coma parametros
                 | empty"""
   pass
 def p_empty(p):

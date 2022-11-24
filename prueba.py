@@ -239,3 +239,50 @@ def t_comBloque(t):
 # t_finParentesis = r'\)'
 # t_comilla = r' \' '
 # t_asig = r':='
+
+
+# def p_adelante(p):
+#   """adelante : ADEL finFuncion"""
+#   is_first_operaciones = True if p_adelante.counter <= 0 else False
+#   # p_adelante.counter += 1
+#   traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
+#   pass
+
+
+# def p_atras(p):
+#   """atras : ATR finFuncion"""
+#   is_first_operaciones = True if p_atras.counter <= 0 else False
+#   # p_adelante.counter += 1
+#   traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
+#   pass
+# def p_izquierda(p):
+#   """izquierda : IZQ finFuncion"""
+#   is_first_operaciones = True if p_izquierda.counter <= 0 else False
+#   # p_adelante.counter += 1
+#   traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
+#   pass
+# def p_derecha(p):
+#   """derecha : DER finFuncion"""
+#   is_first_operaciones = True if p_derecha.counter <= 0 else False
+#   # p_adelante.counter += 1
+#   traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
+#   pass
+# def p_parar(p):
+#   """parar : STOP finFuncion"""
+#   is_first_operaciones = True if p_parar.counter <= 0 else False
+#   # p_adelante.counter += 1
+#   traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
+#   pass
+# def p_esperar(p):
+#   """esperar : ESP inicioParentesis numero finParentesis finLinea"""
+#   is_first_operaciones = True if p_esperar.counter <= 0 else False
+#   # p_adelante.counter += 1
+#   traductorArduino(p,cb_p_operaciones, is_first_reserved=is_first_operaciones, is_reserved=True)
+#   pass
+
+            #   | adelante cuerpo
+            #   | atras cuerpo
+            #   | izquierda cuerpo
+            #   | derecha cuerpo
+            #   | esperar cuerpo
+            #   | parar cuerpo

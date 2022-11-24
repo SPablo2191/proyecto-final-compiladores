@@ -119,24 +119,24 @@ def t_variable(t):
 
 analizador = lex.lex()
 
-# def leerTxt():
-#     try:
-#         f = open('data.txt', 'r')
-#         data = f.read()
-#         f.close()
-#         return data
-#     except:
-#         sys.stdout.write('Reading from stad  input (tye EOF to end) : \n')
-#         data = sys.stdin.read()
-#         return data
+def leerTxt():
+    try:
+        f = open('data.txt', 'r')
+        data = f.read()
+        f.close()
+        return data
+    except:
+        sys.stdout.write('Reading from stad  input (tye EOF to end) : \n')
+        data = sys.stdin.read()
+        return data
 
 
-# analizador.input(leerTxt())
+analizador.input(leerTxt())
 
-# # Identifica tokens
-# print('Token - Lexema - Linea')
-# while True:
-#     tok = analizador.token()
-#     if not tok:
-#         break
-#     print('(', tok.type, ',', tok.value, ',', tok.lineno, ')')
+# Identifica tokens
+print('Token - Lexema - Linea')
+while True:
+    tok = analizador.token()
+    if not tok:
+        break
+    print('(', tok.type, ',', tok.value, ',', tok.lineno, ')')
