@@ -72,8 +72,4 @@ def cb_p_reservadas(p):
     elif list_p[1] == 'STOP':
       return 'parar();'+"\n"
 
-# if __name__ == "__main__":
-#   res = cb_p_incluir([None, 'extend', '(', 'nombreDeLibreria', '.txt', ')', ';', None])
 
-#   res1 = cb_p_definir([None, 'VBLE', '(', 'MD1', ':', 'int', ')', ';'])
-#   print(res1)
