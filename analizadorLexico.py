@@ -52,6 +52,7 @@ tokens = [
 
 
 # Expresiones regulares para tokens 
+t_ignore_space = r"[\t]+"
 
 def t_finLinea(t):
     r'\.'
